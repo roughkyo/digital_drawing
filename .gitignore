@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# 분석용 임시 결과
+sim.png
+canvas*.png
+*_cmp.png
+
+# 배포·에디터
+.vercel/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

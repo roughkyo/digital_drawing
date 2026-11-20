@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paint</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Paint</h1>
+    <div class="counter"><span id="count">0</span> strokes</div>
+  </header>
+
+  <div class="toolbar">
+    <label>Size <span id="size" class="val">0 px</span></label>
+    <label>Opacity <span id="opacity" class="val">0%</span></label>
+    <label>Color <span id="swatch" class="swatch"></span></label>
+  </div>
+
+  <main class="workspace">
+    <div class="canvas-wrap">
+      <canvas id="canvas" width="960" height="1449"></canvas>
+    </div>
+    <aside class="ref">
+      <h2>Reference</h2>
+      <img src="https://i.postimg.cc/Y05gzMxk/reference.png" alt="Reference portrait">
+      <p class="stage" id="stage">Ready</p>
+    </aside>
+  </main>
+
+  <script src="strokes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+:root {
+  --bg: #f4f3f0;
+  --panel: #ffffff;
+  --line: #e2dfd9;
+  --ink: #222;
+  --muted: #777;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+.topbar h1 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: .02em; }
+.counter { font-variant-numeric: tabular-nums; color: var(--muted); }
+.counter span { color: var(--ink); font-weight: 600; }
+.toolbar {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding: 8px 18px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+.toolbar label { display: flex; align-items: center; gap: 8px; }
+.toolbar .val { color: var(--ink); font-variant-numeric: tabular-nums; min-width: 48px; }
+.swatch {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.workspace {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 18px;
+  padding: 18px;
+}
+.canvas-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+#canvas {
+  height: 100%;
+  max-width: 100%;
+  aspect-ratio: 1280 / 1932;
+  object-fit: contain;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.12);
+}
+.ref {
+  width: 200px;
+  flex: none;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px;
+  align-self: flex-start;
+}
+.ref h2 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.ref img { width: 100%; display: block; border-radius: 3px; }
+.stage { margin: 8px 0 0; font-size: 13px; font-weight: 600; }
+@media (max-width: 640px) {
+  .workspace { flex-direction: column; }
+  #canvas { height: auto; width: 100%; }
+  .ref { width: 140px; }
+}
