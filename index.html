@@ -9,26 +9,101 @@
 </head>
 <body>
   <header class="topbar">
-    <h1>Paint</h1>
-    <div class="counter"><span id="count">0</span> strokes</div>
+    <div class="brand">
+      <h1>Paint</h1>
+      <div class="counter"><span id="count">0</span> strokes</div>
+    </div>
+
+    <div class="group brush">
+      <div id="brushPreview" class="brush-preview soft"></div>
+      <div>
+        <div class="cap">Brush</div>
+        <div id="brushName" class="big">Soft round</div>
+      </div>
+    </div>
+
+    <div class="group slider">
+      <div class="cap">Size</div>
+      <div class="row">
+        <input id="sizeRange" type="range" min="0" max="120" step="0.1" value="0" disabled>
+        <span class="big"><span id="sizeVal">0</span><small> px</small></span>
+      </div>
+    </div>
+
+    <div class="group slider">
+      <div class="cap">Opacity</div>
+      <div class="row">
+        <input id="opRange" type="range" min="0" max="100" value="0" disabled>
+        <span class="big"><span id="opVal">0</span><small> %</small></span>
+      </div>
+    </div>
+
+    <div class="group color">
+      <div id="colorSwatch" class="color-swatch"></div>
+      <div>
+        <div class="cap">Color</div>
+        <div id="hex" class="big mono">#FFFFFF</div>
+        <div id="rgb" class="mono rgb">R 255 G 255 B 255</div>
+      </div>
+    </div>
+
+    <div class="group stage-info">
+      <div id="stageOf" class="cap">Stage 0 of 4</div>
+      <div id="stageName" class="big">Ready</div>
+    </div>
   </header>
 
-  <div class="toolbar">
-    <label>Size <span id="size" class="val">0 px</span></label>
-    <label>Opacity <span id="opacity" class="val">0%</span></label>
-    <label>Color <span id="swatch" class="swatch"></span></label>
-  </div>
+  <div class="main">
+    <nav class="rail" aria-label="Tools">
+      <button class="tool active" title="Brush" aria-label="Brush">
+        <svg viewBox="0 0 24 24"><path d="M18.4 2.6a2 2 0 0 1 2.9 2.9L11 15.8l-3.4.6.6-3.4z"/><path d="M7.5 16.5c-2 0-3.5 1.5-3.5 3.5 0 .6-.5 1-1 1 1.5 1.5 6 1 6-2.5"/></svg>
+      </button>
+      <button class="tool" title="Pencil" aria-label="Pencil">
+        <svg viewBox="0 0 24 24"><path d="M16 3l5 5L8 21H3v-5z"/><path d="M13 6l5 5"/></svg>
+      </button>
+      <button class="tool" title="Eraser" aria-label="Eraser">
+        <svg viewBox="0 0 24 24"><path d="M7 21l-4-4L14 6l6 6-9 9z"/><path d="M11 21h10"/></svg>
+      </button>
+      <button class="tool" title="Fill" aria-label="Fill">
+        <svg viewBox="0 0 24 24"><path d="M5 11l7-7 8 8-7 7z"/><path d="M5 11h15"/><path d="M21 17c0 1.5-1 2.5-2 2.5S17 18.5 17 17c0-1 2-3.5 2-3.5s2 2.5 2 3.5z"/></svg>
+      </button>
+      <button class="tool" title="Zoom" aria-label="Zoom">
+        <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>
+      </button>
+    </nav>
 
-  <main class="workspace">
-    <div class="canvas-wrap">
-      <canvas id="canvas" width="960" height="1449"></canvas>
-    </div>
-    <aside class="ref">
-      <h2>Reference</h2>
-      <img src="https://i.postimg.cc/Y05gzMxk/reference.png" alt="Reference portrait">
-      <p class="stage" id="stage">Ready</p>
+    <section class="stage-area">
+      <div id="canvasBox" class="canvas-box">
+        <canvas id="canvas" width="960" height="1449"></canvas>
+        <div id="brushCursor" class="brush-cursor" hidden></div>
+      </div>
+    </section>
+
+    <aside class="sidebar">
+      <section>
+        <h2>Reference</h2>
+        <div class="ref-box">
+          <img src="https://i.postimg.cc/Y05gzMxk/reference.png" alt="Reference portrait">
+          <div id="refCursor" class="ref-cursor" hidden></div>
+        </div>
+      </section>
+
+      <section class="stats">
+        <div class="card"><div id="statStrokes" class="num">0</div><div class="lbl">strokes</div></div>
+        <div class="card"><div id="statColors" class="num">0</div><div class="lbl">colors mixed</div></div>
+      </section>
+
+      <section>
+        <h2>Stages</h2>
+        <ol id="stageList" class="stage-list"></ol>
+      </section>
+
+      <section class="palette-sec">
+        <h2>Palette <span id="paletteInfo" class="sub">0 colors</span></h2>
+        <div id="palette" class="palette"></div>
+      </section>
     </aside>
-  </main>
+  </div>
 
   <script src="strokes.js"></script>
   <script src="app.js"></script>
